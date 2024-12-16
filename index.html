@@ -27,39 +27,38 @@
     </form>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function(){
+        document.addEventListener("DOMContentLoaded", function () {
             const provinciaSelect = document.getElementById("provinciasselect");
             const municipioSelect = document.getElementById("municipiosselect");
 
             const provincias = {
-                "Cádiz": ["Jerez", "San Fernando", "Chiclana", "Algeciras", "Puerto Real"], 
-                "Almería": ["Jerez", "Juan"],
-                "Málaga": ["Jerez", "Juan"],
-                "Huelva": ["Jerez", "Juan"],
-                "Córdoba": ["Jerez", "Juan"],
-                "Jaén": ["Jerez", "Juan"],
-                "Sevilla": ["Jerez", "Juan"],
-                "Granada": ["Jerez", "Juan"]
+                "Cádiz": ["Cádiz", "Jerez", "San Fernando", "Chiclana", "Algeciras", "Puerto Real"],
+                "Almería": ["Almería", "Laroya", "Líjar", "Oria", "Lúcar"],
+                "Málaga": ["Málaga", "Benalmádena", "Mijas", "Fuengirola", "Alhaurin del Grande"],
+                "Huelva": ["Huelva", "Almonte", "Cartaya", "Moguer"],
+                "Córdoba": ["Córdoba", "Lucena", "Montalbán", "Dos Torres", "Cabra"],
+                "Jaén": ["Jaén", "Linares", "Baeza", "Martos", "Montizón"],
+                "Sevilla": ["Sevilla", "Dos Hermanas", "Pilas", "Écija"],
+                "Granada": ["Granada", "Santa Fe", "Motril", "Bazas"]
             };
 
-            for(let provincia in provincias){
-                let option = document.createElement("option");
+            for (let provincia in provincias) {
+                const option = document.createElement("option");
                 option.value = provincia;
                 option.textContent = provincia;
-                provinciaSelect.appendChild(option)
+                provinciaSelect.appendChild(option);
             }
 
             provinciaSelect.addEventListener("change", function () {
-
-                const provinciaSeleccionada = provinciaSelect.value;
-                if (provinciaSeleccionada !== "selecciona") {
-                    for (let municipio of provincias[provinciaSeleccionada]) {
+                const provinciaValor = provinciaSelect.value;
+                if (provinciaValor !== "selecciona") {
+                    municipioSelect.disabled = false;
+                    for (let municipio of provincias[provinciaValor]) {
                         const option = document.createElement("option");
                         option.value = municipio;
                         option.textContent = municipio;
                         municipioSelect.appendChild(option);
                     }
-                    municipioSelect.disabled = false;
                 } else {
                     municipioSelect.disabled = true;
                 }
