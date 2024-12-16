@@ -50,7 +50,7 @@
             }
 
             provinciaSelect.addEventListener("change", function () {
-                municipioSelect.innerHTML = '<option value="selecciona">- Selecciona -</option>';
+
                 const provinciaSeleccionada = provinciaSelect.value;
                 if (provinciaSeleccionada !== "selecciona") {
                     for (let municipio of provincias[provinciaSeleccionada]) {
